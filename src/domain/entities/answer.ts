@@ -1,15 +1,22 @@
-import { randomUUID } from "node:crypto";
+import { Entity } from "../../core/entities/entity";
+import type { UniqueEntityID } from "../../core/entities/unique-entity-id";
+import type { Optional } from "../../core/types/optional";
 
-export class Answer {
-  constructor(
-    public content: string,
-    public authorId: string,
-    public questionId: string,
-    public id?: string
-  ) {
-    this.authorId = authorId;
-    this.questionId = questionId;
-    this.content = content;
-    this.id = id ?? randomUUID();
+interface AnswerProps {
+  authorId: UniqueEntityID;
+  questionId: UniqueEntityID;
+  content: string;
+  createdAt: Date;
+  updatedAt?: Date;
+}
+export class Answer extends Entity<AnswerProps> {
+  get content() {
+    return this.props.content;
+  }
+
+  static create(props: Optional<AnswerProps, "createdAt">, id?: UniqueEntityID) {
+    const answer = new Answer({ ...props, createdAt: new Date() }, id);
+
+    return answer;
   }
 }
