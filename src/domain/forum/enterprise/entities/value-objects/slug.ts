@@ -1,6 +1,10 @@
 export class Slug {
-  constructor(public value: string) {
+  private constructor(public value: string) {
     this.value = value;
+  }
+
+  static create(slug: string) {
+    return new Slug(slug);
   }
 
   /**
