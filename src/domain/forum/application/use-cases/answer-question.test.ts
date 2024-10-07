@@ -1,18 +1,13 @@
 import { AnswerQuestionUseCase } from "./answer-question";
-import type { AnswerRepository } from "../repositories/answers-repository";
-import { CreateQuestionUseCase } from "./create-question";
-import type { Question } from "../../enterprise/entities/question";
-import type { QuestionsRepository } from "../repositories/question-repository";
-import { InMemoryQuestionRepository } from "../../../../../test/repositories/in-memory-question-repository";
-import { InMemoryAnswersRepository } from "../../../../../test/repositories/in-memory-answers-repository";
+import { InMemoryAnswerRepository } from "../../../../../test/repositories/in-memory-answer-repository";
 
-let inMemoryAnswersRepository: InMemoryAnswersRepository;
+let inMemoryAnswerRepository: InMemoryAnswerRepository;
 let sut: AnswerQuestionUseCase;
 
 describe("Create Answer", () => {
   beforeEach(() => {
-    inMemoryAnswersRepository = new InMemoryAnswersRepository();
-    sut = new AnswerQuestionUseCase(inMemoryAnswersRepository);
+    inMemoryAnswerRepository = new InMemoryAnswerRepository();
+    sut = new AnswerQuestionUseCase(inMemoryAnswerRepository);
   });
 
   it("should be able to create an answer", async () => {
@@ -23,6 +18,6 @@ describe("Create Answer", () => {
     });
 
     expect(answer.id).toBeTruthy();
-    expect(inMemoryAnswersRepository.items[0].id).toEqual(answer.id);
+    expect(inMemoryAnswerRepository.items[0].id).toEqual(answer.id);
   });
 });

@@ -1,18 +1,18 @@
 import { InMemoryAnswerRepository } from "../../../../../test/repositories/in-memory-answer-repository";
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id";
 import { makeAnswer } from "../../../../../test/factories/make-answer";
-import { DeleteAnswerUseCase } from "./delete-answer";
+import { EditAnswerUseCase } from "./edit-answer";
 
 let inMemoryAnswerRepository: InMemoryAnswerRepository;
-let sut: DeleteAnswerUseCase;
+let sut: EditAnswerUseCase;
 
-describe("Delete answer", () => {
+describe("Edit answer", () => {
   beforeEach(() => {
     inMemoryAnswerRepository = new InMemoryAnswerRepository();
-    sut = new DeleteAnswerUseCase(inMemoryAnswerRepository);
+    sut = new EditAnswerUseCase(inMemoryAnswerRepository);
   });
 
-  it("should be able to delete a answer", async () => {
+  it("should be able to edit a answer", async () => {
     const newAnswer = makeAnswer(
       { authorId: new UniqueEntityID("a-1") },
       new UniqueEntityID("q-1")
@@ -21,14 +21,17 @@ describe("Delete answer", () => {
     await inMemoryAnswerRepository.create(newAnswer);
 
     await sut.execute({
-      answerId: "q-1",
       authorId: "a-1",
+      content: "c-1",
+      answerId: newAnswer.id.toValue(),
     });
 
-    expect(inMemoryAnswerRepository.items).toHaveLength(0);
+    expect(inMemoryAnswerRepository.items[0]).toMatchObject({
+      content: "c-1",
+    });
   });
 
-  it("should not be able to delete a answer from another user", async () => {
+  it("should not be able to edit a answer from another user", async () => {
     const newAnswer = makeAnswer(
       { authorId: new UniqueEntityID("a-1") },
       new UniqueEntityID("q-1")
@@ -38,8 +41,9 @@ describe("Delete answer", () => {
 
     expect(async () => {
       return await sut.execute({
-        answerId: "q-1",
         authorId: "a-2",
+        content: "c-1",
+        answerId: newAnswer.id.toValue(),
       });
     }).rejects.toBeInstanceOf(Error);
   });

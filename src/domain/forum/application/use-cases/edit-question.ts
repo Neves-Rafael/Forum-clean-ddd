@@ -1,6 +1,6 @@
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id";
-import { Question } from "../../enterprise/entities/question";
-import type { QuestionsRepository } from "../repositories/question-repository";
+import type { Question } from "../../enterprise/entities/question";
+import type { QuestionRepository } from "../repositories/question-repository";
 
 interface EditQuestionUseCaseRequest {
   authorId: string;
@@ -9,10 +9,12 @@ interface EditQuestionUseCaseRequest {
   content: string;
 }
 
-interface EditQuestionUseCaseResponse {}
+interface EditQuestionUseCaseResponse {
+  question: Question;
+}
 
 export class EditQuestionUseCase {
-  constructor(private questionRepository: QuestionsRepository) {}
+  constructor(private questionRepository: QuestionRepository) {}
 
   async execute({
     authorId,
@@ -35,6 +37,8 @@ export class EditQuestionUseCase {
 
     await this.questionRepository.save(question);
 
-    return {};
+    return {
+      question,
+    };
   }
 }
