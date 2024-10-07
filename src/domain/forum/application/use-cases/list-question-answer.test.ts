@@ -1,6 +1,3 @@
-import { Slug } from "../../enterprise/entities/value-objects/slug";
-import { makeQuestion } from "../../../../../test/factories/make-question";
-import { ListRecentQuestionsUseCase } from "./list-recent-questions";
 import { InMemoryAnswerRepository } from "../../../../../test/repositories/in-memory-answer-repository";
 import { ListQuestionAnswersUseCase } from "./list-question-answer";
 import { makeAnswer } from "../../../../../test/factories/make-answer";

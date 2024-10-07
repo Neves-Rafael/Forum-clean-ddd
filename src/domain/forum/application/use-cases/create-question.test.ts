@@ -1,8 +1,4 @@
-import { AnswerQuestionUseCase } from "./answer-question";
-import type { AnswerRepository } from "../repositories/answer-repository";
 import { CreateQuestionUseCase } from "./create-question";
-import type { Question } from "../../enterprise/entities/question";
-import type { QuestionsRepository } from "../repositories/question-repository";
 import { InMemoryQuestionRepository } from "../../../../../test/repositories/in-memory-question-repository";
 
 let inMemoryQuestionRepository: InMemoryQuestionRepository;

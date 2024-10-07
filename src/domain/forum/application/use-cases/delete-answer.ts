@@ -1,5 +1,3 @@
-import { UniqueEntityID } from "../../../../core/entities/unique-entity-id";
-import { Answer } from "../../enterprise/entities/answer";
 import type { AnswerRepository } from "../repositories/answer-repository";
 
 interface DeleteAnswerUseCaseRequest {
