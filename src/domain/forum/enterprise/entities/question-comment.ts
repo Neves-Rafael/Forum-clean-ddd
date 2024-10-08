@@ -3,11 +3,11 @@ import { Optional } from "../../../../core/types/optional";
 import { Comment, CommentProps } from "./comment";
 
 export interface QuestionCommentProps extends CommentProps {
-  questionID: UniqueEntityID;
+  questionId: UniqueEntityID;
 }
 export class QuestionComment extends Comment<QuestionCommentProps> {
   get questionID() {
-    return this.props.questionID;
+    return this.props.questionId;
   }
 
   static create(props: Optional<QuestionCommentProps, "createdAt">, id?: UniqueEntityID) {
