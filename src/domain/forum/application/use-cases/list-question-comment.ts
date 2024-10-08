@@ -1,3 +1,4 @@
+import { Either, right } from "../../../../core/either";
 import { QuestionComment } from "../../enterprise/entities/question-comment";
 import { QuestionCommentRepository } from "../repositories/question-comment-repository";
 
@@ -6,9 +7,12 @@ interface ListQuestionCommentUseCaseRequest {
   questionId: string;
 }
 
-interface ListQuestionCommentUseCaseResponse {
-  questionComment: QuestionComment[];
-}
+type ListQuestionCommentUseCaseResponse = Either<
+  null,
+  {
+    questionComment: QuestionComment[];
+  }
+>;
 
 export class ListQuestionCommentUseCase {
   constructor(private questionCommentsRepository: QuestionCommentRepository) {}
@@ -21,6 +25,6 @@ export class ListQuestionCommentUseCase {
       page,
     });
 
-    return { questionComment };
+    return right({ questionComment });
   }
 }

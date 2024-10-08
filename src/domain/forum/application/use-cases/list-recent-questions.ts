@@ -1,13 +1,18 @@
+import { Either, left, right } from "../../../../core/either";
 import { Question } from "../../enterprise/entities/question";
 import { QuestionRepository } from "../repositories/question-repository";
+import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
 interface ListRecentQuestionsUseCaseRequest {
   page: number;
 }
 
-interface ListRecentQuestionsUseCaseResponse {
-  questions: Question[];
-}
+type ListRecentQuestionsUseCaseResponse = Either<
+  ResourceNotFoundError,
+  {
+    questions: Question[];
+  }
+>;
 
 export class ListRecentQuestionsUseCase {
   constructor(private questionRepository: QuestionRepository) {}
@@ -18,9 +23,9 @@ export class ListRecentQuestionsUseCase {
     const questions = await this.questionRepository.findManyRecent({ page });
 
     if (!questions) {
-      throw new Error("Questions not found.");
+      return left(new ResourceNotFoundError());
     }
 
-    return { questions };
+    return right({ questions });
   }
 }
