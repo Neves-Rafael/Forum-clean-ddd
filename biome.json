@@ -26,6 +26,9 @@
       },
       "suspicious": {
         "noEmptyInterface": "off"
+      },
+      "style": {
+        "useImportType": "off"
       }
     }
   },

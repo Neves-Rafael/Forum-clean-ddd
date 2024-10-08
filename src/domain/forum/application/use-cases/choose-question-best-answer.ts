@@ -1,6 +1,6 @@
-import type { Question } from "../../enterprise/entities/question";
-import type { AnswerRepository } from "../repositories/answer-repository";
-import type { QuestionRepository } from "../repositories/question-repository";
+import { Question } from "../../enterprise/entities/question";
+import { AnswerRepository } from "../repositories/answer-repository";
+import { QuestionRepository } from "../repositories/question-repository";
 
 interface ChooseQuestionBestAnswerUseCaseRequest {
   answerId: string;

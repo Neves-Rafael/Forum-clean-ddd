@@ -1,5 +1,5 @@
-import type { Question } from "../../enterprise/entities/question";
-import type { QuestionRepository } from "../repositories/question-repository";
+import { Question } from "../../enterprise/entities/question";
+import { QuestionRepository } from "../repositories/question-repository";
 
 interface GetQuestionBySlugUseCaseRequest {
   slug: string;

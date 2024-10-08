@@ -1,4 +1,4 @@
-import type { QuestionRepository } from "../repositories/question-repository";
+import { QuestionRepository } from "../repositories/question-repository";
 
 interface DeleteQuestionUseCaseRequest {
   questionId: string;

@@ -1,5 +1,5 @@
-import type { Answer } from "../../enterprise/entities/answer";
-import type { AnswerRepository } from "../repositories/answer-repository";
+import { Answer } from "../../enterprise/entities/answer";
+import { AnswerRepository } from "../repositories/answer-repository";
 
 interface ListQuestionAnswersUseCaseRequest {
   page: number;
