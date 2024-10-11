@@ -5,8 +5,8 @@ import { AnswerAttachment } from "../../enterprise/entities/answer-attachment";
 import { AnswerAttachmentList } from "../../enterprise/entities/answer-attachment-list";
 import { AnswerAttachmentRepository } from "../repositories/answer-attachments-repository";
 import { AnswerRepository } from "../repositories/answer-repository";
-import { NotAllowedError } from "./errors/not-allowed-error";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import { NotAllowedError } from "../../../../core/errors/not-allowed-error";
+import { ResourceNotFoundError } from "../../../../core/errors/resource-not-found-error";
 
 interface EditAnswerUseCaseRequest {
   authorId: string;

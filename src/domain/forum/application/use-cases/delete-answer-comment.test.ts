@@ -3,7 +3,7 @@ import { InMemoryAnswerCommentRepository } from "../../../../../test/repositorie
 import { DeleteAnswerCommentUseCase } from "./delete-answer-comment";
 import { makeAnswerComment } from "../../../../../test/factories/make-answer-comment";
 import { UniqueEntityID } from "../../../../core/entities/unique-entity-id";
-import { NotAllowedError } from "./errors/not-allowed-error";
+import { NotAllowedError } from "../../../../core/errors/not-allowed-error";
 
 let inMemoryAnswerRepository: InMemoryAnswerRepository;
 let inMemoryAnswerCommentRepository: InMemoryAnswerCommentRepository;
