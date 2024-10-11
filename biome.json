@@ -25,13 +25,17 @@
         "noUnusedImports": "error"
       },
       "suspicious": {
-        "noEmptyInterface": "off"
+        "noEmptyInterface": "off",
+        "noExplicitAny": "off"
       },
       "style": {
         "useImportType": "off"
       },
       "complexity": {
-        "noBannedTypes": "off"
+        "noBannedTypes": "off",
+        "noStaticOnlyClass": "off",
+        "noForEach": "off",
+        "noThisInStatic": "off"
       }
     }
   },
